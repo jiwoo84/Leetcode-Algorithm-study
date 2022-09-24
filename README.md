@@ -5,11 +5,8 @@
 ## 팀원
 <table>
   <tr>
-   <td align="center"><a href="https://github.com/jiwoo84"><img src="https://avatars.githubusercontent.com/u/86906350?v=4" width="80px;" alt=""/><br /><sub><b>Jiwoo</b></sub></a></td>
+   <td align="center"><a href="https://github.com/jiwoo84"><img src="https://avatars.githubusercontent.com/u/86906350?v=4" width="100px;" alt=""/><br /><sub><b>Jiwoo</b></sub></a></td>
    </tr>
-   <tr></tr>
-   <tr></tr>
-   <tr></tr>
  </table>
 
 ## ✅ commit 규칙
