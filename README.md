@@ -5,10 +5,7 @@
 ## 팀원
 <table>
   <tr>
-   <td align="center"><a href="https://github.com/jiwoo84"><img src="https://avatars.githubusercontent.com/u/86906350?v=4" width="100px;" alt=""/><br /><b>Jiwoo</b><</a></td>
-    <td></td>
-    <td></td>
-    <td></td>
+   <td align="center"><a href="https://github.com/jiwoo84"><img src="https://avatars.githubusercontent.com/u/86906350?v=4" width="100px;" alt=""/><br /><b>Jiwoo</b></a></td>
    </tr>
  </table>
 
