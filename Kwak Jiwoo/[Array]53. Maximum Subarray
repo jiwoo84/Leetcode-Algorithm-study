@@ -1,0 +1,38 @@
+// 1차 풀이 => Time Limit Exceeded
+var maxSubArray = function(nums) {
+    
+    if(nums.length === 1) return nums[0];
+    
+    // 모든 요소의 합
+    let allSum = nums.reduce((ac,v) => ac + v, 0);
+    
+    let result = -Number.MAX_VALUE;
+    
+    for(let i = 0; i < nums.length; i++) {
+        let sum = nums[i];
+        if(sum > result) result = sum;
+        for(let j = i+1; j < nums.length; j++) {
+            sum += nums[j];
+            if(sum > result) result = sum;
+        }
+    }
+    
+    return result;
+    
+};
+
+// 2차 풀이 => discussion 참고
+var maxSubArray = function(nums) {
+    
+    if(nums.length === 1) return nums[0];
+    
+    let pre = 0; // 연속적인 값 업데이트
+    let max = -Number.MAX_VALUE;
+    
+    for(let i = 0; i < nums.length; i++) {
+        pre = Math.max(pre+nums[i], nums[i]); // 이전 요소들에 더할지, 현재 요소만 가져갈지 결정
+        max = Math.max(pre, max);
+    }
+    
+    return max;
+};
