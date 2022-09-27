@@ -32,7 +32,7 @@
 
 ## ✅ commit 규칙
 
-- **commit 메세지** : `**번호. 문제이름 / 난이도 / O(스스로 품) or X(다른 풀이 참고)**`
+- **commit 메세지** : `번호. 문제이름 / 난이도 / O(스스로 품) or X(다른 풀이 참고)`
     
     ex) `238. Product of Array Except Self / Medium / O`
     
