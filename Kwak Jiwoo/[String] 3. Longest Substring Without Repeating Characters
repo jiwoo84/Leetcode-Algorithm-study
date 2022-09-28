@@ -1,0 +1,16 @@
+var lengthOfLongestSubstring = function (s) {
+  let arr = []; // 중복되지 않는 알파벳 저장할 배열
+  let max = 0; // 최대값
+
+  for (let al of s) {
+    if (!arr.includes(al)) arr.push(al);
+    else {
+      if (max < arr.length) max = arr.length; // 최대값보다 길면 업데이트
+      arr = arr.slice(arr.indexOf(al) + 1);
+      arr.push(al);
+    }
+  }
+
+  if (max < arr.length) return arr.length;
+  return max;
+};
