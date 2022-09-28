@@ -1,0 +1,24 @@
+// 아나그램으로 그룹핑
+var groupAnagrams = function(strs) {
+
+    // 단어의 알파벳을 쪼개 정렬하고, 공통된 것끼리 묶는 방식
+    // strs를 값복사(원문은 비교해야하니까 보존) -> 각 요소 배열화 & sort & 문자열화 -> [index,value]
+    let arr = [...strs].map(v => v.split('').sort().join('')).map((v,i) => [i,v]);
+    
+    // value값으로 정렬
+    arr = arr.sort((a,b) => a[1].localeCompare(b[1]));
+    
+    // 결과값: 맨 처음값 넣어줌
+    let result = [[strs[arr[0][0]]]];
+    
+    // 요소 순회하면서 원 strs의 index 값 불러와서 새 array 만듬
+    for(let i = 1; i < arr.length; i++) {
+        
+        let [index, sortWord] = arr[i];
+        
+        if(sortWord === arr[i-1][1]) result[result.length-1].push(strs[index]);
+        else result.push([strs[index]]);
+    }
+    
+    return result;
+};
