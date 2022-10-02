@@ -1,0 +1,15 @@
+var wordBreak = function(s, wordDict) { 
+    
+    let dp = new Array(s.length+1).fill(false);
+    dp[0] = true;
+    wordDict = new Set(wordDict); // 중복 없애기
+    
+    for(let start = 0; start < s.length; start++) { 
+        for(let end = start+1; end <= s.length; end++) { // slice 때문에 end+1로 설정
+            let word = s.slice(start, end);
+            if(wordDict.has(word) && dp[start]) dp[end] = true; // 사전에 속하고, end기준 앞&뒤 모두 사전에 속해야 true
+        }
+    }
+    
+    return dp[s.length]; 
+};
