@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+
 var lengthOfLIS = function(nums) {
     const dp = [];
     for(let i = 0 ; i < nums.length ; i++){
