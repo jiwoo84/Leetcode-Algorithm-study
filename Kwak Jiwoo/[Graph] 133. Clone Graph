@@ -1,0 +1,26 @@
+/** input
+ {
+  val: 1,
+  neighbors: [ { val: 2, neighbors: [obj1, obj3] }, { val: 4, neighbors: [Array] } ]
+}
+**/
+
+// new node = { val: 0, neighbors: [] }
+
+var cloneGraph = function (graph) {
+
+  var map = {};
+  return clone(graph);
+
+  function clone(node) {
+    if (!node) return node;
+    if (!map[node.val]) { // map에 해당 값이 없다면
+      map[node.val] = new Node(node.val); // map(obj)의 node.val 인덱스에 {val : node.val, neighbors: []} 생성
+      map[node.val].neighbors = node.neighbors.map(clone); // 복사할 그래프의 neighbors값 그대로 복사
+    }
+    return map[node.val]; // 해당 인덱스값 반환
+  }
+}
+
+// Runtime: 118 ms, faster than 17.31%
+// Memory Usage: 44.3 MB, less than 11.91%
