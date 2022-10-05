@@ -1,0 +1,42 @@
+var canFinish = function (numCourses, prerequisites) {
+    
+  const result = []; // 완성된 결과값
+  const queue = [];
+    
+  const beforeCheck = Array(numCourses).fill(0); // 전에 들어갈 숫자 갯수 
+  const afterCheck = Array.from({length: numCourses}, () => []); // 뒤에 들어갈 숫자 요소 배열
+
+  for (const [before, after] of prerequisites) {
+      afterCheck[before].push(after);
+      beforeCheck[after] ++;
+  }
+
+  for (let i = 0; i < beforeCheck.length; i++) { // 맨 앞 숫자 찾음
+    if (beforeCheck[i] === 0) queue.push(i);
+  }
+    
+  // ex) [1,0] [0,2] [0,3]
+  // afterCheck = [[2,3],[0],[1],[]] // i 뒤에 [v,v] 있음
+  // beforeCheck = [1,0,1,1] // i 전에 v개 있음
+
+  // queue = [1] 
+  // result = []
+    
+    while(queue.length) {
+        
+        const v = queue.shift();
+        
+        if(afterCheck[v].length) { // 뒤에 들어갈 수가 있다면
+            
+            afterCheck[v].forEach(e => { // 뒤에 들어가는 숫자 순회
+                
+                beforeCheck[e] --; // e 앞에 들어가는 v는 처리 됐으니까 하나 뺌
+                
+                if(beforeCheck[e] === 0) queue.push(e); // 바로 뒤에 들어갈 숫자 찾아서 queue에 넣어줌
+            })
+        }
+        result.push(v); // 처리 후, 최종 결과값에 넣음
+    }
+
+  return numCourses === result.length; 
+};
