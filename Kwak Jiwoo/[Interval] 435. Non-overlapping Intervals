@@ -1,0 +1,22 @@
+// [1,2][3,4] return 0
+// [1,3][1,4][2,4][3,5][4,5] return 2
+//[-65, -11],[-63, 2],[-62, -49],[-52, 31],[-40, -26],[-31, 49],[30, 47],[66, 98],[82, 97],[95, 99] return 7
+
+var eraseOverlapIntervals = function(intervals) {
+    
+    // inteval[1] 기준으로 정렬
+    intervals.sort((a,b) => a[1] - b[1]);
+    
+    let cnt = 0; // 삭제하는 요소 개수
+    let end = intervals[0][1]; 
+    
+    for(let i = 1; i < intervals.length; i++) {
+        
+        let [nextS, nextE] = intervals[i];
+        
+        if(end <= nextS) end = intervals[i][1] // 다음 요소의 start가 end보다 크면 포함됨
+        else cnt ++; // 아니면 삭제됨
+    }
+    
+    return cnt;
+};
