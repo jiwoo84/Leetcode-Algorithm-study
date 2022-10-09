@@ -1,0 +1,35 @@
+// 0인 요소의 row, colmn의 요소 모두 0으로 바꾸기
+
+var setZeroes = function(matrix) {
+    
+    // 0인 요소 탐색, 저장
+    let [rows, cols] = [[],[]];
+
+    for(let r = 0; r < matrix.length; r++) {
+        for(let c = 0; c < matrix[0].length; c++) {
+            console.log(matrix[r][c])
+            if(matrix[r][c] === 0) {
+                if(!rows.includes(r)) rows.push(r);
+                if(!cols.includes(c)) cols.push(c);
+            }
+        }
+    }
+    
+    // 순회하면서 저장한 행,열 0으로 변경
+    for(let r = 0; r < matrix.length; r++) {
+        
+        if(rows.includes(r)) {
+            matrix[r].fill(0);
+            continue;
+        }
+        for(let c = 0; c < matrix[0].length; c++) {
+            if(cols.includes(c)) {
+                matrix[r][c] = 0;
+            }
+        }
+    }
+    
+    return matrix;
+};
+
+// 474ms / 50.6mb
