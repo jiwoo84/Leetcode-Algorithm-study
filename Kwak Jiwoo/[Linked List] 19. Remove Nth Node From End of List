@@ -38,7 +38,7 @@ var removeNthFromEnd = function(head, n) {
         else currentHead = currentHead.next; // 아니라면 다음 노드로 넘어감
     }
     
-    // 순회에서 통과 못하는 예시) [1,2] // 2 => 첫번째 노드 삭제하는 경우
+    // 순회에서 통과 못하는 예시: [1,2] // 2 => 첫번째 노드 삭제하는 경우
     return head.next; // next만 반환함
 }
 
