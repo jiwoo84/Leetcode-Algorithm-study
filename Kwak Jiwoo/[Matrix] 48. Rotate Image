@@ -1,0 +1,21 @@
+// 오른쪽으로 90도 회전한 매트릭스 구하기 (새로운 매트릭스 추가x)
+// discuss 참고
+
+var rotate = function(matrix) {
+    
+    for(let i = 0; i < matrix.length; i++) {
+        for(let j = i+1; j < matrix[0].length; j++) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]]
+        }
+    }
+    
+    for(let i = 0; i < matrix.length; i++) {
+        matrix[i] = matrix[i].reverse();
+    }
+    
+    return matrix;
+};
+
+// 70ms / 42.4mb
+// 대각선을 중심으로 반전 -> 모든 행의 요소를 반대로 함
+// 무조건 회전하지 말고 반전 후 어떻게 변경하면 되는지 규칙을 찾아보는 것도 방법 중 하나
