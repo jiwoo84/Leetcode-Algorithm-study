@@ -1,0 +1,25 @@
+// 많이 들어있는 숫자 K개 반환
+
+var topKFrequent = function(nums, k) {
+    
+    let map = new Map();
+    let result = [];
+    
+    nums.forEach(v => { // map = {[숫자, 개수], ...}
+        map.set(v, (map.get(v) || 0) + 1);
+       
+    });
+    
+    // arr로 변환 후, 개수 오름차순으로 정렬
+    let arr = Array.from(map.entries()).sort((a,b) => a[1] - b[1]);
+    
+    while(k > 0) { 
+        result.push(arr.pop()[0]);
+        k --;
+    }
+    
+    return result;
+    
+};
+
+// 104ms / 45.1mb
