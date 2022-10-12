@@ -1,0 +1,66 @@
+// 내 풀이 => 통과 but 느림 (4313ms)
+var countSubstrings = function(s) {
+    
+    let cnt = s.length; // 기본값 넣어줌
+    
+    // ex) abccbad
+    for(let i = 0; i < s.length; i++) {
+        for(let j = i+1; j < s.length; j++) {
+            let word = s.slice(i, j+1); // 잘라가면서 palindromic 확인
+            if(s[i] === s[j] && word === word.split('').reverse().join('')) cnt ++;
+        }
+    }
+    return cnt;
+};
+
+// 2차 풀이 => 제일 빠름 (78ms)
+var countSubstrings = function(s) {
+    
+    let cnt = s.length; // 초기값 세팅
+    
+    for(let i = 0; i < s.length; i++) {
+        
+        // 반복되는 문자열이 홀수 길이일 때
+        let left = i;
+        let right = i + 2; // i+1이 중앙이 됨
+        
+        while(left >= 0 && right < s.length && s[left] === s[right]) {
+            cnt ++;
+            left --;
+            right ++;
+        }
+        
+        // 반복 문자열 짝수일 때
+        left = i; 
+        right = i+1;
+        
+        while(left >= 0 && right < s.length && s[left] === s[right]) {
+            cnt ++;
+            left --;
+            right ++;
+        }
+    }
+    
+    return cnt;
+}
+
+// 3차 풀이 (104ms)
+var countSubstrings = function(s) {
+    
+    let cnt = 0;
+    
+    for(let i = 0; i < s.length; i++) {
+        for(let j = i; j < i+2; j++) { // i,i+1를 중앙으로 해서 2번 순회
+            let left = i;
+            let right = j;
+
+            while(left >= 0 && right < s.length && s[left] === s[right]) {
+                cnt ++;
+                left --;
+                right ++;
+            }
+        }
+    }
+    
+    return cnt;
+}

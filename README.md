@@ -22,7 +22,6 @@
 
 <aside>
 💡 commit / PR 규칙을 지켜주세요!
-
 </aside>
 
 1. 저장소를 `fork` 한다
@@ -40,8 +39,12 @@
 
 ## ✅ PR 규칙
 
-- **PR 제목** : 이름 / n주차 - 요일 / n문제
+fork한 repository는 commit이 아닌 PR을 해야 잔디가 심어집니다.
+
+매일 / 매주 중 골라서 자유롭게 PR 해주시면 됩니다. 
+
+- **PR 제목**
+    - 매일 : 이름 / 날짜 / 문제 번호 `ex) Kwak Jiwoo /  9.28 / 238`
+    - 매주 : 이름 / 이름 / n주차 - 요일 / n문제 `ex) Kwak Jiwoo / 2주차 - 월 / 2문제`
     
-    ex) Kwak Jiwoo /  2주차 - 월 / 2문제
-    
-- **comment** : 자유로운 특이사항
+- **comment** : 특이사항

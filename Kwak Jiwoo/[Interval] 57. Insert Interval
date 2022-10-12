@@ -1,0 +1,30 @@
+function insert(intervals, newInterval) {
+    
+    let [newS, newE] = newInterval;
+    let result = [];
+    let left = [];
+    let right = [];
+    
+    for(let i = 0; i < intervals.length; i++) {
+        
+        let [s,e] = intervals[i];
+        
+        if(e < newS) left.push([s,e]);
+        else if(newE < s) right.push([s,e]);
+        
+        else { // 겹치는 경우
+            newS = Math.min(s, newS);
+            newE = Math.max(e, newE);
+        }
+    }
+    
+    return [...left, [newS, newE], ...right];
+}
+
+// test
+// [1,2] [4,6] [7,8] new = [2,5]  return = [1,6][7,8]
+// [2,5] new = [1,4] return [1,5]
+// [2,5] new = [1,6] return[1,6]
+// [1,2] new = [2,3]  return [1,3]
+// [0,2] new = [4,5]  return [0,2],[4,5]
+

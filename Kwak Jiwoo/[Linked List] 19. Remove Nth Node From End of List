@@ -1,0 +1,45 @@
+// 문제: 연결 리스트의 뒤에서 n번째 노드를 삭제하고, 연결 리스트를 반환하시오
+
+// 단일 연결 리스트 만드는 함수 
+//  function ListNode(val, next) {
+//      this.val = (val===undefined ? 0 : val)
+//      this.next = (next===undefined ? null : next)
+//   }
+
+// 만들어진 단일 연결 리스트 모양 
+// ListNode {  
+//   val: 1,
+//   next: ListNode { val: 2, next: ListNode { val: 3, next: [ListNode] } }
+// }
+
+var removeNthFromEnd = function(head, n) {
+
+    // 연결된 노드의 갯수 세기
+    let totalCnt = 0;
+    let currentHead = head;
+    
+     while(currentHead !== null) { // 다음 연결 리스트가 없을 때까지 반복
+        currentHead = currentHead.next;
+        totalCnt ++;
+     }
+    
+    // 뒤에서 n번째 노드 삭제
+    currentHead = head;
+    let deleteCnt = totalCnt -n; // 앞에서부터 몇 번째인지 계산 (순회를 0부터 했을 때)
+
+    for(let i = 0; i <= deleteCnt; i++) {
+
+        if(i === deleteCnt - 1) { // 만약 삭제 전 노드라면
+            let connectNode = currentHead.next.next; // 연결할 다다음 노드 저장
+            currentHead.next = connectNode;  // 현 노드의 next에 연결하면, 다음 노드 자연스럽게 삭제
+            return head; // 즉시 반환
+        }
+        
+        else currentHead = currentHead.next; // 아니라면 다음 노드로 넘어감
+    }
+    
+    // 순회에서 통과 못하는 예시: [1,2] // 2 => 첫번째 노드 삭제하는 경우
+    return head.next; // next만 반환함
+}
+
+// 95ms / 43.8MB

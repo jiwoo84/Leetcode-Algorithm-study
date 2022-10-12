@@ -1,0 +1,33 @@
+// 끝부터 노드를 중간 중간에 끼워넣어서 반환
+
+// 2차 풀이 -> discuss 참고
+var reorderList = function(head) {
+    
+    let stack = [], node = head;
+    
+    if(!node) return
+    
+    while(node) { // 앞의 값부터 차례대로 넣음
+        stack.push(node)
+        node = node.next
+    }
+    
+    
+    node = stack.shift(); 
+    let len = stack.length
+    
+    for(let i = 0; i < len; i++) {
+        
+        if(i % 2 === 0) {
+            node.next = stack.pop();
+        }
+        else node.next = stack.shift();
+        
+        node = node.next;
+    }
+    node.next = null;
+    
+    return head;
+}
+
+// 184ms / 50.5mb
