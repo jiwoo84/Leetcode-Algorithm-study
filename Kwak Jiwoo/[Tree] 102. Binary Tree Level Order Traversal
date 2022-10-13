@@ -1,0 +1,31 @@
+// 이진트리를 순회하면서 같은 레벨의 값끼리 배열로 묶어 반환
+// discuss 참고
+
+var levelOrder = function(root) {
+    
+    if(root === null) return []; // 예외 처리
+    
+    let queue = [root];
+    let result = [];
+    
+    while(queue.length) {
+        
+        let qlen = queue.length; // 현재 레벨의 노드 개수 저장
+        let oneLevel = [];
+        
+        for(let i = 0; i < qlen; i ++) {
+            let head = queue.shift();
+            oneLevel.push(head.val);
+            
+            if(head.left) queue.push(head.left);
+            if(head.right) queue.push(head.right);
+        }
+        
+        result.push(oneLevel); // 현재 레벨의 값 배열을 추가
+    }
+    
+    return result;
+};
+
+// 102ms / 43.9mb
+
