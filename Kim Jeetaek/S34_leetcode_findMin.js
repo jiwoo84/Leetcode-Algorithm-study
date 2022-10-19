@@ -18,10 +18,10 @@
  * @return {number}
  */
 var findMin = function (nums) {
-  return Math.min(...nums); // for문 한 번만 돌리기에 O(n) - 문제에서 요구하는 것보다 효율적이다
+  return Math.min(...nums); // for문 한 번만 돌리기에 O(n) - 문제에서 요구하는 것보다 복잡하다
 };
 var findMin = function (nums) {
-  return nums.sort((a, b) => a - b)[0]; // sort()는 O(n log n) - 문제에서 요구하는 것보다 복잡하다
+  return nums.sort((a, b) => a - b)[0]; // sort()는 O(n log n) - 위보다 복잡하다
 };
 var findMin = function (nums) {
   // 반씩 쪼개서 보는 이진트리는 O(log n) - 어째 sort()보다 런타임이 느리게 나왔다
